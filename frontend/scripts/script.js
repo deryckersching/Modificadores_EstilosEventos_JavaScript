@@ -95,8 +95,9 @@ imagem.addEventListener("mouseleave", () => {
 // dispara a cada mudança no valor de um input, em tempo real.)
 
 const meuInput = document.querySelector("#campo-busca");
+const resultado = document.querySelector("#resultado-busca");
 meuInput.addEventListener("input", (evento) => {
-    console.log(evento.target.value);
+    resultado.textContent = "Você digitou: " + evento.target.value;
 });
 
 // 10. No #form-contato, impeça o comportamento padrão do formulário 
@@ -109,7 +110,7 @@ const feedback = document.getElementById("feedback-form");
 formulario.addEventListener("submit", function(evento) {
     evento.preventDefault();
     feedback.textContent = "E-mail enviado!";
-    feedback.classList.add("Sucesso");
+    feedback.classList.add("sucesso");
 });
 
 // 11. No #campo-email, adicione um evento que, quando o campo 
@@ -132,7 +133,12 @@ campo.addEventListener("blur", (evento) => {
 // mostre no console a mensagem "Busca confirmada!". (Pesquisar: evento 
 // de teclado e como identificar qual tecla foi pressionada.)
 
- 
+const busca = document.querySelector("#campo-busca");
+busca.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        console.log("Busca confirmada!");
+    }
+});
 
  
 // Bloco 4 — Para pensar (sem código)
@@ -143,3 +149,8 @@ campo.addEventListener("blur", (evento) => {
 // formulário, foco, teclado). Na opinião de vocês, por que faz 
 // sentido existirem eventos diferentes em vez de um só evento 
 // genérico para "algo aconteceu"?
+
+// RESPOSTA 13. Acredito que o principal motivo seja que cada 
+// situação possui um evento específico. Isso torna o código 
+// mais correto, organizado e fácil de entender, pois cada evento 
+// pode ter sua própria função e ação de acordo com o que aconteceu.
